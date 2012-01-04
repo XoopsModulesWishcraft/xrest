@@ -19,7 +19,7 @@ switch ($op) {
         global $xoopsDB, $xoopsModule;
 		
 		$module_handler = xoops_gethandler('module');
-		$xoModule = $module_handler->getByDirname('xjson');
+		$xoModule = $module_handler->getByDirname('xrest');
 
         xoops_cp_header();
 		adminmenu(5);
@@ -27,7 +27,7 @@ switch ($op) {
         $item_list_view = array();
         $block_view = array(); 
 		
-        $result_view = $xoopsDB->query("SELECT plugin_id, plugin_name FROM " . $xoopsDB->prefix("json_plugins") . " ");
+        $result_view = $xoopsDB->query("SELECT plugin_id, plugin_name FROM " . $xoopsDB->prefix("rest_plugins") . " ");
         if ($xoopsDB->getRowsNum($result_view)) {
             while ($myrow_view = $xoopsDB->fetcharray($result_view)) {
                 $item_list_view['cid'] = $myrow_view['plugin_id'];

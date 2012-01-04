@@ -73,7 +73,7 @@ if (!function_exists("adminMenu")) {
 	  /* Nice buttons styles */
 		global $xoopsConfig,$xoopsModule;
 		$module_handler =& xoops_gethandler('module');
-		$xoModule = $module_handler->getByDirname('xjson');
+		$xoModule = $module_handler->getByDirname('xrest');
 	    $dirname=$xoModule->getVar('dirname');
 	    echo "
     	<style type='text/css'>

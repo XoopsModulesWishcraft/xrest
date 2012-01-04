@@ -134,11 +134,16 @@ foreach($FunctionDefine as $id => $func)  {
 		}
 	}	
 }
-$mode = (isset($_REQUEST['mode'])?(string)$_REQUEST['mode']:'json');
+$mode = (isset($_REQUEST['outputmode'])?(string)$_REQUEST['outputmode']:'json');
 switch ($mode) {
 	default:
 	case 'json':
 		echo json_encode($ttlresult);
+	case 'serial':
+		echo serialize($ttlresult);
+	case 'xml':
+		echo xrest_toXml($ttlresult, strtolower($_REQUEST['xrestplugin']));
+		
 }
 exit(0);
 ?>

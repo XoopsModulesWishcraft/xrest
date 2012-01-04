@@ -26,7 +26,7 @@ case "fields":
 	if (!$tbl_id)
 		$tbl_id=1;
 			
-	$sql = "SELECT * FROM ".$xoopsDB->prefix('json_tables')." where view = '0'";
+	$sql = "SELECT * FROM ".$xoopsDB->prefix('rest_tables')." where view = '0'";
 	$ret = $xoopsDB->queryF($sql);
 	
 	$form_sel = new XoopsThemeForm(_XC_SELECTTABLE, "seltable", $_SERVER['PHP_SELF'] ."");
@@ -194,11 +194,11 @@ case "savefields":
 		$tt++;	
 		switch ($f){
 		case "new":
-			$sql = "INSERT INTO ".$xoopsDB->prefix('json_fields')." (tbl_id, fieldname, allowpost, allowretrieve, allowupdate, visible, `key`, `string`, `int`, `float`, `text`, `other`, `crc`) VALUES ('$tbl_id','".addslashes($fieldname[$tt])."','".intval($post[$tt])."','".intval($retrieve[$tt])."','".intval($update[$tt])."','".intval($visible[$tt])."','".intval($key[$tt])."','".intval($string[$tt])."','".intval($int[$tt])."','".intval($float[$tt])."','".intval($text[$tt])."','".intval($other[$tt])."','".intval($crc[$tt])."')";
+			$sql = "INSERT INTO ".$xoopsDB->prefix('rest_fields')." (tbl_id, fieldname, allowpost, allowretrieve, allowupdate, visible, `key`, `string`, `int`, `float`, `text`, `other`, `crc`) VALUES ('$tbl_id','".addslashes($fieldname[$tt])."','".intval($post[$tt])."','".intval($retrieve[$tt])."','".intval($update[$tt])."','".intval($visible[$tt])."','".intval($key[$tt])."','".intval($string[$tt])."','".intval($int[$tt])."','".intval($float[$tt])."','".intval($text[$tt])."','".intval($other[$tt])."','".intval($crc[$tt])."')";
 			$ty=$xoopsDB->queryF($sql);
 			break;
 		default:
-			$sql = "UPDATE ".$xoopsDB->prefix('json_fields')." SET allowpost ='".intval($post[$tt])."', allowupdate ='".intval($update[$tt])."',allowretrieve = '".intval($retrieve[$tt])."', visible='".intval($visible[$tt])."',`key` ='".intval($key[$tt])."', `string` = '".intval($string[$tt])."', `int`='".intval($int[$tt])."',`float` ='".intval($float[$tt])."', `text` = '".intval($text[$tt])."', `other`='".intval($other[$tt])."', crc = '".intval($crc[$tt])."' WHERE fld_id = ".$id[$tt]. " and tbl_id = ".$tbl_id;
+			$sql = "UPDATE ".$xoopsDB->prefix('rest_fields')." SET allowpost ='".intval($post[$tt])."', allowupdate ='".intval($update[$tt])."',allowretrieve = '".intval($retrieve[$tt])."', visible='".intval($visible[$tt])."',`key` ='".intval($key[$tt])."', `string` = '".intval($string[$tt])."', `int`='".intval($int[$tt])."',`float` ='".intval($float[$tt])."', `text` = '".intval($text[$tt])."', `other`='".intval($other[$tt])."', crc = '".intval($crc[$tt])."' WHERE fld_id = ".$id[$tt]. " and tbl_id = ".$tbl_id;
 			$ty=$xoopsDB->queryF($sql);
 		}
 	
@@ -213,11 +213,11 @@ case "savetables":
 		$tt++;	
 		switch ($f){
 		case "new":
-			$sql = "INSERT INTO ".$xoopsDB->prefix('json_tables')." (tablename, allowpost, allowretrieve, allowupdate, visible, view) VALUES ('".addslashes($tablename[$tt])."','".intval($post[$tt])."','".intval($retrieve[$tt])."','".intval($update[$tt])."','".intval($visible[$tt])."','0')";
+			$sql = "INSERT INTO ".$xoopsDB->prefix('rest_tables')." (tablename, allowpost, allowretrieve, allowupdate, visible, view) VALUES ('".addslashes($tablename[$tt])."','".intval($post[$tt])."','".intval($retrieve[$tt])."','".intval($update[$tt])."','".intval($visible[$tt])."','0')";
 			$ty=$xoopsDB->queryF($sql);
 			break;
 		default:
-			$sql = "UPDATE ".$xoopsDB->prefix('json_tables')." SET allowpost ='".intval($post[$tt])."', allowretrieve = '".intval($retrieve[$tt])."', allowupdate = '".intval($update[$tt])."', visible='".intval($visible[$tt])."' WHERE tbl_id = ".$id[$tt];
+			$sql = "UPDATE ".$xoopsDB->prefix('rest_tables')." SET allowpost ='".intval($post[$tt])."', allowretrieve = '".intval($retrieve[$tt])."', allowupdate = '".intval($update[$tt])."', visible='".intval($visible[$tt])."' WHERE tbl_id = ".$id[$tt];
 			$ty=$xoopsDB->queryF($sql);
 		}
 	
@@ -231,11 +231,11 @@ case "saveviews":
 		$tt++;	
 		switch ($f){
 		case "new":
-			$sql = "INSERT INTO ".$xoopsDB->prefix('json_tables')." (tablename, allowpost, allowretrieve, allowupdate, visible, view) VALUES ('".addslashes($tablename[$tt])."','".intval($post[$tt])."','".intval($retrieve[$tt])."','".intval($update[$tt])."','".intval($visible[$tt])."','1')";
+			$sql = "INSERT INTO ".$xoopsDB->prefix('rest_tables')." (tablename, allowpost, allowretrieve, allowupdate, visible, view) VALUES ('".addslashes($tablename[$tt])."','".intval($post[$tt])."','".intval($retrieve[$tt])."','".intval($update[$tt])."','".intval($visible[$tt])."','1')";
 			$ty=$xoopsDB->queryF($sql);
 			break;
 		default:
-			$sql = "UPDATE ".$xoopsDB->prefix('json_tables')." SET allowpost ='".intval($post[$tt])."', allowretrieve = '".intval($retrieve[$tt])."', allowupdate = '".intval($update[$tt])."', visible='".intval($visible[$tt])."' WHERE tbl_id = ".$id[$tt];
+			$sql = "UPDATE ".$xoopsDB->prefix('rest_tables')." SET allowpost ='".intval($post[$tt])."', allowretrieve = '".intval($retrieve[$tt])."', allowupdate = '".intval($update[$tt])."', visible='".intval($visible[$tt])."' WHERE tbl_id = ".$id[$tt];
 			$ty=$xoopsDB->queryF($sql);
 		}
 	
@@ -312,11 +312,11 @@ case "saveplugins":
 		$tt++;	
 		switch ($f){
 		case "new":
-			$sql = "INSERT INTO ".$xoopsDB->prefix('json_plugins')." (plugin_name, plugin_file, active) VALUES ('".addslashes($functionname[$tt])."','".addslashes($filename[$tt])."','".intval($active[$tt])."')";
+			$sql = "INSERT INTO ".$xoopsDB->prefix('rest_plugins')." (plugin_name, plugin_file, active) VALUES ('".addslashes($functionname[$tt])."','".addslashes($filename[$tt])."','".intval($active[$tt])."')";
 			$ty=$xoopsDB->queryF($sql);
 			break;
 		default:
-			$sql = "UPDATE ".$xoopsDB->prefix('json_plugins')." SET active ='".intval($active[$tt])."' WHERE plugin_id = ".$id[$tt];
+			$sql = "UPDATE ".$xoopsDB->prefix('rest_plugins')." SET active ='".intval($active[$tt])."' WHERE plugin_id = ".$id[$tt];
 			$ty=$xoopsDB->queryF($sql);
 		}
 	
@@ -332,7 +332,7 @@ case "plugins":
 	
 	$FunctionDefine = array();
 	foreach($funct->GetServerExtensions() as $extension){
-		$phpcode= file_get_contents(XOOPS_ROOT_PATH.'/modules/xjson/plugins/'.$extension);
+		$phpcode= file_get_contents(XOOPS_ROOT_PATH.'/modules/xrest/plugins/'.$extension);
 		ob_start();
 		$r=eval("?>".$phpcode."<?php
 ");
@@ -476,7 +476,7 @@ function strip_prefix($raw_tablename){
 
 function get_tableconfig($raw_tablename){
 	global $xoopsDB;
-	$sql = "SELECT * FROM ".$xoopsDB->prefix('json_tables')." WHERE tablename = '".strip_prefix($raw_tablename)."'";
+	$sql = "SELECT * FROM ".$xoopsDB->prefix('rest_tables')." WHERE tablename = '".strip_prefix($raw_tablename)."'";
 	$ret = $xoopsDB->query($sql);
 	if ($xoopsDB->getRowsNum($ret)){
 		return $xoopsDB->fetchArray($ret);
@@ -486,7 +486,7 @@ function get_tableconfig($raw_tablename){
 }
 function get_functionconfig($plugin_filename){
 	global $xoopsDB;
-	$sql = "SELECT * FROM ".$xoopsDB->prefix('json_plugins')." WHERE plugin_file = '".addslashes($plugin_filename)."'";
+	$sql = "SELECT * FROM ".$xoopsDB->prefix('rest_plugins')." WHERE plugin_file = '".addslashes($plugin_filename)."'";
 	$ret = $xoopsDB->query($sql);
 	if ($xoopsDB->getRowsNum($ret)){
 		return $xoopsDB->fetchArray($ret);
@@ -497,7 +497,7 @@ function get_functionconfig($plugin_filename){
 
 function get_fieldconfig($raw_fieldname, $tbl_id){
 	global $xoopsDB;
-	$sql = "SELECT * FROM ".$xoopsDB->prefix('json_fields')." WHERE fieldname = '$raw_fieldname' and tbl_id = $tbl_id";
+	$sql = "SELECT * FROM ".$xoopsDB->prefix('rest_fields')." WHERE fieldname = '$raw_fieldname' and tbl_id = $tbl_id";
 	$ret = $xoopsDB->query($sql);
 	if ($xoopsDB->getRowsNum($ret)){
 		return $xoopsDB->fetchArray($ret);
@@ -507,7 +507,7 @@ function get_fieldconfig($raw_fieldname, $tbl_id){
 }
 function get_tableid($tablename){
 	global $xoopsDB;
-	$sql = "SELECT * FROM ".$xoopsDB->prefix('json_tables')." WHERE tablename = '$tablename'";
+	$sql = "SELECT * FROM ".$xoopsDB->prefix('rest_tables')." WHERE tablename = '$tablename'";
 	$ret = $xoopsDB->query($sql);
 	$row = $xoopsDB->fetchArray($ret);
 	return $row['tbl_id'];
@@ -515,7 +515,7 @@ function get_tableid($tablename){
 
 function get_tablename($tableid){
 	global $xoopsDB;
-	$sql = "SELECT * FROM ".$xoopsDB->prefix('json_tables')." WHERE tbl_id = '$tableid'";
+	$sql = "SELECT * FROM ".$xoopsDB->prefix('rest_tables')." WHERE tbl_id = '$tableid'";
 	$ret = $xoopsDB->query($sql);
 	$row = $xoopsDB->fetchArray($ret);
 	return $row['tablename'];
