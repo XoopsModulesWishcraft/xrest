@@ -13,11 +13,11 @@ $GLOBALS['xrestModuleConfig'] = $config_handler->getConfigList($GLOBALS['xrestMo
 	
 $part = explode('?', $_SERVER['REQUEST_URI']);
 unset($part[0]);
-$request = urldecode(implode('?', $part));
+$request = implode('?', $part);
 $values = array();
 foreach(explode('&', $request) as $vars) {
 	$part = explode('=', $vars);
-	$values[$part[0]] = $part[1];
+	$values[$part[0]] = urldecode($part[1]);
 }
 if (isset($_POST)) {
 	foreach($_POST as $field => $value) {
