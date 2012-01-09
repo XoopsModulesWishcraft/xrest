@@ -27,6 +27,11 @@
 		$fields_handler = xoops_getmodulehandler('fields', 'xrest');
 		
 		$table = $tables_handler->get($tbl_id);
+		
+		if (!is_object($table)) {
+			redirect_header(XOOPS_URL.'/modules/xrest/admin/index.php?op=tables', 10, _XREST_AM_MSG_NEEDTOSAVETABLES_FIRST);
+			exit;
+		}
 
 		$fields = $fields_handler->getFieldFromTable($table->getVar('tablename'));
 		

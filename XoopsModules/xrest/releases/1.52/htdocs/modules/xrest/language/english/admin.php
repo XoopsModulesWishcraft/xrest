@@ -5,7 +5,7 @@
 	define('_XREST_AM_MSG_SAVETABLES_DATABASE_UPDATED', 'Saving Tables is complete, database has been updated!');
 	define('_XREST_AM_MSG_SAVEVIEWS_DATABASE_UPDATED', 'Saving Views is complete, database has been updated!');
 	define('_XREST_AM_MSG_SAVEPLUGINS_DATABASE_UPDATED', 'Saving Plugins is complete, database has been updated - Don\'t forget to set your permissions!');
-	
+	define('_XREST_AM_MSG_NEEDTOSAVETABLES_FIRST', 'Either the table ID you have selected doesn\'t exist or you haven\'t saved any tables in the database yet!');
 	//About box
 	define('_XREST_AM_MAKE_DONATION', 'Make XRest Even Better - Make a donation now!');
 	
