@@ -80,7 +80,7 @@ class XrestPluginsHandler extends XoopsPersistableObjectHandler
 					$file = $prefix.$file;$extension;
 					if (strtolower(substr($file, strlen($file) - strlen($extension), strlen($extension)))==strtolower($extension)) {
 						$filelist[$u++] = $file;
-					} elseif ($extension = '*.*') {
+					} elseif ($extension == '*.*') {
 						$filelist[$u++] = $file;
 					}
 				}

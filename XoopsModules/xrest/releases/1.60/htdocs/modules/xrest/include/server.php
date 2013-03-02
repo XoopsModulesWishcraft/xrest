@@ -23,6 +23,10 @@ $GLOBALS['xrestPlugin'] = $plugin;
 
 // Gets URI Values and POST and GET Values
 $path = parse_url(XOOPS_URL.$_SERVER['REQUEST_URI'], PHP_URL_PATH);
+if (substr($path,0,1)!='\\')
+	$path .= '\\' .$path;
+if (substr($path,strlen($path)-1,1)!='\\')
+	$path .= $path . '\\';
 $request = parse_url(XOOPS_URL.$_SERVER['REQUEST_URI'], PHP_URL_QUERY);
 $values = array();
 parse_str($request, $values);
@@ -98,8 +102,10 @@ switch($mode) {
 		
 		if (function_exists($plugin . '_xsd_soap'))
 			$xsdfunc = $plugin . '_xsd_soap';
-		elseif (function_exists($plugin . '_xsd_soap'))
+		elseif (function_exists($plugin . '_xsd_rest'))
 			$xsdfunc = $plugin . '_xsd_rest';
+		elseif (function_exists($plugin . '_xsd'))
+			$xsdfunc = $plugin . '_xsd';
 		if (isset($xsdfunc))
 			$GLOBALS['xoopsTpl']->assign('xsd', $xsdfunc($parser));
 		
@@ -140,8 +146,13 @@ switch($mode) {
 				if ((!$result = XoopsCache::read('xrest_results_'.$plugin.'_'.md5(implode(':',$values))))&&$pluginObj->getVar('active')==true) {
 					$result = array();
 					$opfunc = $plugin;
-					$xsd = $plugin.'_xsd';	
-					$opxsd = $xsd();
+					if (function_exists($plugin . '_xsd_rest'))
+						$xsdfunc = $plugin . '_xsd_rest';
+					elseif (function_exists($plugin . '_xsd'))
+						$xsdfunc = $plugin . '_xsd';
+					elseif (function_exists($plugin . '_xsd_soap'))
+						$xsdfunc = $plugin . '_xsd_soap';				
+					$opxsd = $xsdfunc();
 					$tmp=array();
 					if (!empty($opfunc)) {
 						$fields=0;

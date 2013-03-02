@@ -1,4 +1,17 @@
 ========================================
+ 2013/03/03 17:12:23 Version 1.60 STABLE
+========================================
+ - Changed 	/class/plugin.php Testing of plugins with eval() removed (Wishcraft)
+ - Changed 	/class/plugin.php Extension testing added to getFileListAsArray() (Wishcraft)
+ - Changed 	/include/server.php Preloaders added to main service bootstrapping (Wishcraft)
+ - Changed 	/include/server.php Execution Mode added to support SOAP + WSDL (Wishcraft)
+ - Changed 	/include/server.php parse_url() & parse_str() added to variable scoop for accuracy (Wishcraft)
+ - Changed 	/plugin/tweet.php tweet_xsd() renamed to tweet_xsd_soap() & tweet_xsd_rest() (Wishcraft)
+ - Changed 	/plugin/tweet.php tweet_wsdl_documentation() added (Wishcraft)
+ - Added 	/xxxx/*.* Commenting added to main functional routines  (Wishcraft)
+ 
+
+========================================
  2012/01/09 07:01:00 Version 1.52 STABLE
 ========================================
  - Changed $GLOBALS['xoopsModule'] in module renamed to $GLOBALS['xrestModule'] /class/gateway, /class, /include, / (Wishcraft)

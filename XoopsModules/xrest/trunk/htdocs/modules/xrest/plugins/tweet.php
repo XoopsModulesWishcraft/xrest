@@ -105,7 +105,9 @@
 		$i=0;
 		$xsd['request'][$i++] = array("name" => "username", "type" => "string");
 		$xsd['request'][$i++] = array("name" => "password", "type" => "string");
-		$xsd['request'][$i++] = array("name" => "nick", "type" => "string");
+		$xsd['request'][$i++] = array("name" => "nick", "items" => array(
+												array("name" => "password", "type" => "string"),
+												array("name" => "password", "type" => "string")));
 		$xsd['request'][$i++] = array("name" => "message", "type" => "string");
 	
 		$i=0;
